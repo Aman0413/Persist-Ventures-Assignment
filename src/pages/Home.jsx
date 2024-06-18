@@ -14,7 +14,9 @@ function Home({ selectedCategory }) {
   const fetchData = async () => {
     try {
       const res = await axios.get(
-        `https://newsapi.org/v2/top-headlines?country=in&q=${searchQuery}&category=${selectedCategory}&apiKey=56476b034fa84be684f38f3c04cc0531`
+        `https://newsapi.org/v2/top-headlines?country=in&q=${searchQuery}&category=${selectedCategory}&apiKey=${
+          import.meta.env.VITE_NEWS_API_KEY
+        }`
       );
 
       setData(res.data.articles);
