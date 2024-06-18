@@ -3,12 +3,13 @@ import NewsCard from "../components/NewsCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Loader from "../components/Loader";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 
 function Home() {
   const [category, setCategory] = useState("business");
+  const [page, setPage] = useState(2);
   const [searchQuery, setSearchQuery] = useState("");
   const [data, setData] = useState([]);
-  const [LoaderState, SetloaderState] = useState(true);
 
   //calling news api
   const fetchData = async () => {
@@ -19,6 +20,15 @@ function Home() {
       console.log(res.data.articles);
     } catch (error) {
       console.log(error);
+    }
+  };
+
+  const selectHandler = (selectedPage) => {
+    if (
+      selectedPage >= 1 ||
+      (selectedPage >= data.length && selectedPage !== page)
+    ) {
+      setPage(selectedPage);
     }
   };
 
@@ -34,7 +44,7 @@ function Home() {
         {data.length == 0 ? (
           <Loader />
         ) : (
-          data.map((item, index) => {
+          data.slice(page * 6 - 6, page * 6).map((item, index) => {
             return (
               <>
                 <NewsCard
@@ -52,8 +62,32 @@ function Home() {
             );
           })
         )}
-        {}
       </div>
+
+      {data.length > 0 && (
+        <div className=" my-5 flex p-2 items-center justify-center space-x-4 text-xl cursor-pointer">
+          <span onClick={() => selectHandler(page + 1)}>
+            <FaArrowLeft className="text-[#3c82f6]" />
+          </span>
+          {[...Array(Math.ceil(data.length / 6))].map((_, i) => {
+            return (
+              <span
+                key={i}
+                onClick={() => selectHandler(i + 1)}
+                className={`${
+                  page === i + 1 ? "text-[#3c82f6] font-bold" : ""
+                }`}
+              >
+                {i + 1}
+              </span>
+            );
+          })}
+
+          <span onClick={() => selectHandler(page - 1)}>
+            <FaArrowRight className="text-[#3c82f6]" />
+          </span>
+        </div>
+      )}
     </div>
   );
 }

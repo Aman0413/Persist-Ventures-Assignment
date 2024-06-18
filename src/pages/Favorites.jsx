@@ -22,23 +22,36 @@ function Favorites() {
   return (
     <div className="w-full h-full bg-gray-100">
       <div className="flex gap-10 flex-wrap py-4">
-        {favorites.map((item, index) => {
-          return (
+        {
+          // favorites is empty
+          favorites.length <= 0 ? (
             <>
-              <NewsCard
-                key={index}
-                id={item.id}
-                title={item.title}
-                image={item.urlToImage}
-                author={item.author}
-                desc={item.description}
-                date={item.publishedAt}
-                link={item.url}
-                type={"favorites"}
-              />
+              <div className="w-full  h-screen  flex justify-center items-center">
+                <h1 className="text-4xl text-gray-300 font-bold">Empty</h1>
+              </div>
             </>
-          );
-        })}
+          ) : (
+            <></>
+          )
+        }
+        {favorites.length > 0 &&
+          favorites.map((item, index) => {
+            return (
+              <>
+                <NewsCard
+                  key={index}
+                  id={item.id}
+                  title={item.title}
+                  image={item.urlToImage}
+                  author={item.author}
+                  desc={item.description}
+                  date={item.publishedAt}
+                  link={item.url}
+                  type={"favorites"}
+                />
+              </>
+            );
+          })}
       </div>
     </div>
   );
