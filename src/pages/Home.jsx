@@ -2,12 +2,13 @@ import React from "react";
 import NewsCard from "../components/NewsCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Navbar from "../components/Navbar";
+import Loader from "../components/Loader";
 
 function Home() {
   const [category, setCategory] = useState("business");
   const [searchQuery, setSearchQuery] = useState("");
   const [data, setData] = useState([]);
+  const [LoaderState, SetloaderState] = useState(true);
 
   //calling news api
   const fetchData = async () => {
@@ -27,25 +28,31 @@ function Home() {
 
   return (
     <div className="">
-      <Navbar />
-      <div className="flex gap-10 flex-wrap py-4">
-        {data.map((item, index) => {
-          return (
-            <>
-              <NewsCard
-                key={index}
-                id={index}
-                title={item.title}
-                image={item.urlToImage}
-                author={item.author}
-                desc={item.description}
-                date={item.publishedAt}
-                link={item.url}
-                type="home"
-              />
-            </>
-          );
-        })}
+      <div className="flex gap-10 flex-wrap py-4  p-2 justify-evenly">
+        {/* add loader */}
+
+        {data.length == 0 ? (
+          <Loader />
+        ) : (
+          data.map((item, index) => {
+            return (
+              <>
+                <NewsCard
+                  key={index}
+                  id={index}
+                  title={item.title}
+                  image={item.urlToImage}
+                  author={item.author}
+                  desc={item.description}
+                  date={item.publishedAt}
+                  link={item.url}
+                  type="home"
+                />
+              </>
+            );
+          })
+        )}
+        {}
       </div>
     </div>
   );

@@ -1,47 +1,30 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const [category, setCategory] = useState("business");
   const [searchQuery, setSearchQuery] = useState("");
 
-        
-
-
   return (
-    <div>
-      <div className="bg-red-300 p-4 flex items-center justify-center space-x-5">
-        {/* <div>
-        <button className="bg-gray-300 text-black  py-2 px-4 rounded-full">
-          Button
-        </button>
-        <button className="bg-gray-300 text-black  py-2 px-4 rounded-full">
-          Button
-        </button>
-        <button className="bg-gray-300 text-black  py-2 px-4 rounded-full">
-          Button
-        </button>
-        <button className="bg-gray-300 text-black  py-2 px-4 rounded-full">
-          Button
-        </button>
-        <button className="bg-gray-300 text-black  py-2 px-4 rounded-full">
-          Button
-        </button>
-      </div> */}
-        <div>
-          <form className="flex space-x-2">
+    <div className="mb-10">
+      <div className="bg-gray-200  p-4 flex items-center justify-between rounded-xl">
+        <Link to={"/"}>
+          <h1 className="text-xl md:text-2xl font-bold ">Newsz</h1>
+        </Link>
+        <div className="flex items-center justify-between space-x-6">
+          <div>
+            <Link to={"/favorites"}>
+              <h3 className="font-semibold cursor-pointer">Favorites</h3>
+            </Link>
+          </div>
+          <div>
             <input
-              className="p-2 rounded-md"
+              className=" w-32 px-2 py-1 md:w-44 md:p-2 rounded-md"
               type="text"
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search..."
             />
-            <button
-              type="submit"
-              className="bg-gray-300 text-black  py-2 px-4 rounded-md hover:bg-gray-400 transition-all ease-in-out duration-200 active:scale-95 "
-            >
-              Search
-            </button>
-          </form>
+          </div>
         </div>
       </div>
     </div>

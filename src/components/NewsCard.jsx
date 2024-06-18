@@ -55,6 +55,7 @@ function NewsCard({ type, id, title, image, author, desc, date, link }) {
     }
   };
 
+  //remove post from local storage
   const removeFavorites = () => {
     try {
       let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
@@ -68,7 +69,7 @@ function NewsCard({ type, id, title, image, author, desc, date, link }) {
   };
 
   return (
-    <div className="bg-white overflow-hidden border-b-4 border-blue-500 w-full md:w-1/3 rounded-lg">
+    <div className="bg-white overflow-hidden border-b-4 border-blue-500 w-full md:w-80  rounded-lg">
       <img
         src={
           image
@@ -76,7 +77,7 @@ function NewsCard({ type, id, title, image, author, desc, date, link }) {
             : "https://plus.unsplash.com/premium_photo-1688561384438-bfa9273e2c00?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         }
         alt="News Image"
-        className="w-full object-cover h-32 sm:h-48 md:h-64 hover:scale-110 transition-all ease-in-out duration-300"
+        className="w-full object-cover h-48 sm:h-48 md:h-64 hover:scale-110 transition-all ease-in-out duration-300"
       />
 
       <a href={link} className="cursor-pointer" target="_blank">

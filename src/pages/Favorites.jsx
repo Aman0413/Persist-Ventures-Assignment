@@ -3,8 +3,8 @@ import NewsCard from "../components/NewsCard";
 
 function Favorites() {
   const [favorites, setFavorites] = useState([]);
-  //get favorites from local storage
 
+  //get favorites from local storage
   const getFavorites = () => {
     try {
       let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
@@ -19,10 +19,8 @@ function Favorites() {
     getFavorites();
   }, [favorites]);
 
-
-
   return (
-    <div className="">
+    <div className="w-full h-full bg-gray-100">
       <div className="flex gap-10 flex-wrap py-4">
         {favorites.map((item, index) => {
           return (
