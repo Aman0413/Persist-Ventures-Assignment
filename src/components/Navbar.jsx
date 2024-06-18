@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-function Navbar() {
-  const [category, setCategory] = useState("business");
+function Navbar({ selectedCategory, handleCategoryChange }) {
   const [searchQuery, setSearchQuery] = useState("");
 
   return (
@@ -16,6 +15,23 @@ function Navbar() {
             <Link to={"/favorites"}>
               <h3 className="font-semibold cursor-pointer">Favorites</h3>
             </Link>
+          </div>
+
+          <div>
+            <select
+              name="category"
+              id=""
+              className="p-2 rounded-md"
+              value={selectedCategory}
+              onChange={handleCategoryChange}
+            >
+              <option value="general">Health</option>
+              <option value="business">Business</option>
+              <option value="entertainment">Entertainment</option>
+              <option value="health">Health</option>
+              <option value="sports">Sports</option>
+              <option value="technology">Technology</option>
+            </select>
           </div>
           <div>
             <input

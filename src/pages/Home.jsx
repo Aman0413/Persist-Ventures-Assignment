@@ -5,8 +5,7 @@ import axios from "axios";
 import Loader from "../components/Loader";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 
-function Home() {
-  const [category, setCategory] = useState("business");
+function Home({ selectedCategory }) {
   const [page, setPage] = useState(2);
   const [searchQuery, setSearchQuery] = useState("");
   const [data, setData] = useState([]);
@@ -14,10 +13,11 @@ function Home() {
   //calling news api
   const fetchData = async () => {
     try {
-      const res =
-        await axios.get`https://newsapi.org/v2/top-headlines?country=in&q=${searchQuery}&${category}=business&apiKey=56476b034fa84be684f38f3c04cc0531`;
+      const res = await axios.get(
+        `https://newsapi.org/v2/top-headlines?country=in&q=${searchQuery}&category=${selectedCategory}&apiKey=56476b034fa84be684f38f3c04cc0531`
+      );
+
       setData(res.data.articles);
-      console.log(res.data.articles);
     } catch (error) {
       console.log(error);
     }
@@ -34,7 +34,7 @@ function Home() {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [selectedCategory]);
 
   return (
     <div className="">
