@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
+import toast from "react-hot-toast";
 import { FaRegHeart, FaHeart } from "react-icons/fa";
 
-function NewsCard({ title, image, author, desc, date, link }) {
+function NewsCard({ type, id, title, image, author, desc, date, link }) {
   // Function to convert date to like "21 Oct 2019" format
   function convertDate(dateString) {
     // Parse the input date string
@@ -33,6 +34,38 @@ function NewsCard({ title, image, author, desc, date, link }) {
   }
 
   //save post to local storage
+  const saveFavorites = () => {
+    try {
+      let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+      favorites.push({
+        id: id,
+        title: title,
+        image: image,
+        author: author,
+        desc: desc,
+        date: date,
+        link: link,
+      });
+
+      localStorage.setItem("favorites", JSON.stringify(favorites));
+      toast.success("Added to Favorites");
+    } catch (error) {
+      toast.error("Failed to add to Favorites");
+      console.log(error);
+    }
+  };
+
+  const removeFavorites = () => {
+    try {
+      let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+      let newFavorites = favorites.filter((item) => item.id !== id);
+      localStorage.setItem("favorites", JSON.stringify(newFavorites));
+      toast.success("Removed from Favorites");
+    } catch (error) {
+      toast.error("Failed to remove from Favorites");
+      console.log(error);
+    }
+  };
 
   return (
     <div className="bg-white overflow-hidden border-b-4 border-blue-500 w-full md:w-1/3 rounded-lg">
@@ -61,8 +94,22 @@ function NewsCard({ title, image, author, desc, date, link }) {
         </div>
       </a>
 
-      <div className="bg-red-200 flex justify-end p-2">
-        <FaRegHeart className="text-2xl hover:scale-105 active:scale-95 transition-all ease-in-out duration-200 cursor-pointer" />
+      <div className=" flex justify-end p-2">
+        {type === "home" ? (
+          <button
+            className="bg-[#3c82f6] text-white px-4 py-2 rounded-lg text-sm hover:bg-[#295db1] hover:scale-105 active:scale-95 transition-all ease-in-out duration-200"
+            onClick={saveFavorites}
+          >
+            Add to Favorites
+          </button>
+        ) : (
+          <button
+            className="bg-[#3c82f6] text-white px-4 py-2 rounded-lg text-sm hover:bg-[#295db1] hover:scale-105 active:scale-95 transition-all ease-in-out duration-200"
+            onClick={removeFavorites}
+          >
+            Remove from Favorites
+          </button>
+        )}
       </div>
     </div>
   );
