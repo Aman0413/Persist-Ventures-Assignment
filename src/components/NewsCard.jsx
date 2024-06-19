@@ -69,7 +69,7 @@ function NewsCard({ type, id, title, image, author, desc, date, link }) {
   };
 
   return (
-    <div className="bg-white overflow-hidden border-b-4 border-blue-500 w-full md:w-80  rounded-lg">
+    <div className="bg-white overflow-hidden border-b-4 border-blue-500 w-full md:w-80  rounded-lg shadow-xl">
       <img
         src={
           image

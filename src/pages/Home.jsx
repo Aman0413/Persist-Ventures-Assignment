@@ -5,9 +5,8 @@ import axios from "axios";
 import Loader from "../components/Loader";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 
-function Home({ selectedCategory }) {
-  const [page, setPage] = useState(2);
-  const [searchQuery, setSearchQuery] = useState("");
+function Home({ selectedCategory, searchQuery }) {
+  const [page, setPage] = useState(1);
   const [data, setData] = useState([]);
 
   //calling news api
@@ -36,7 +35,7 @@ function Home({ selectedCategory }) {
 
   useEffect(() => {
     fetchData();
-  }, [selectedCategory]);
+  }, [selectedCategory, searchQuery]);
 
   return (
     <div className="">
@@ -68,7 +67,7 @@ function Home({ selectedCategory }) {
 
       {data.length > 0 && (
         <div className=" my-5 flex p-2 items-center justify-center space-x-4 text-xl cursor-pointer">
-          <span onClick={() => selectHandler(page + 1)}>
+          <span onClick={() => selectHandler(page - 1)}>
             <FaArrowLeft className="text-[#3c82f6]" />
           </span>
           {[...Array(Math.ceil(data.length / 6))].map((_, i) => {
@@ -85,7 +84,7 @@ function Home({ selectedCategory }) {
             );
           })}
 
-          <span onClick={() => selectHandler(page - 1)}>
+          <span onClick={() => selectHandler(page + 1)}>
             <FaArrowRight className="text-[#3c82f6]" />
           </span>
         </div>

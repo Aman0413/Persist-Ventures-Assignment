@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-function Navbar({ selectedCategory, handleCategoryChange }) {
-  const [searchQuery, setSearchQuery] = useState("");
-
+function Navbar({
+  selectedCategory,
+  handleCategoryChange,
+  setSearchQuery,
+  searchQuery,
+}) {
+  console.log(searchQuery);
   return (
     <div className="mb-10">
       <div className="bg-gray-200  p-4 flex items-center justify-between rounded-xl">
@@ -17,7 +21,7 @@ function Navbar({ selectedCategory, handleCategoryChange }) {
             </Link>
           </div>
 
-          <div>
+          <div className="hidden md:block">
             <select
               name="category"
               id=""
@@ -36,7 +40,7 @@ function Navbar({ selectedCategory, handleCategoryChange }) {
           </div>
           <div>
             <input
-              className=" w-32 px-2 py-1 md:w-44 md:p-2 rounded-md"
+              className="hidden md:block w-32 px-2 py-1 md:w-44 md:p-2 rounded-md"
               type="text"
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search..."

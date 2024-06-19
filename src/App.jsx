@@ -7,6 +7,8 @@ import { useState } from "react";
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState("general");
+  // handle search query
+  const [searchQuery, setSearchQuery] = useState("");
 
   const handleCategoryChange = (event) => {
     setSelectedCategory(event.target.value);
@@ -18,11 +20,18 @@ function App() {
         <Navbar
           selectedCategory={selectedCategory}
           handleCategoryChange={handleCategoryChange}
+          setSearchQuery={setSearchQuery}
+          searchQuery={searchQuery}
         />
         <Routes>
           <Route
             path={"/"}
-            element={<Home selectedCategory={selectedCategory} />}
+            element={
+              <Home
+                selectedCategory={selectedCategory}
+                searchQuery={searchQuery}
+              />
+            }
           />
           <Route path={"/favorites"} element={<Favorites />} />
         </Routes>
