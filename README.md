@@ -15,19 +15,19 @@ This is a dynamic news website built using React and styled with Tailwind CSS. T
 
 ### Homepage
 
-![Homepage](https://asset.cloudinary.com/dd3yp2kob/7774ed25ecb96dc55211652916f27e70)
+![Homepage](https://res-console.cloudinary.com/dd3yp2kob/thumbnails/v1/image/upload/v1718774442/U2NyZWVuc2hvdF8yMDI0LTA2LTE5X2F0XzEwLjQzLjM3X0FNX2xnazh4aQ==/drilldown)
 
 ### Category Page
 
-![Category Page](https://asset.cloudinary.com/dd3yp2kob/7774ed25ecb96dc55211652916f27e70)
+![Category Page](https://res.cloudinary.com/dd3yp2kob/image/upload/fl_preserve_transparency/v1718774443/Screenshot_2024-06-19_at_10.44.33_AM_su0gvs.jpg?_s=public-apps)
 
 ### Favorites Section
 
-![Favorites Section](https://asset.cloudinary.com/dd3yp2kob/7774ed25ecb96dc55211652916f27e70)
+![Favorites Section](https://res-console.cloudinary.com/dd3yp2kob/thumbnails/v1/image/upload/v1718774442/U2NyZWVuc2hvdF8yMDI0LTA2LTE5X2F0XzEwLjQ1LjAyX0FNX2JwdHEzcQ==/drilldown)
 
 ### Mobile View
 
-![Search Results](https://asset.cloudinary.com/dd3yp2kob/38a46e23ce6ef6d2344c782ac8e9a0da)
+![Search Results](https://res-console.cloudinary.com/dd3yp2kob/thumbnails/v1/image/upload/v1718774441/U2NyZWVuc2hvdF8yMDI0LTA2LTE5X2F0XzEwLjQ3LjIwX0FNX3owcnB3ZA==/drilldown)
 
 ## Tech Stack
 
